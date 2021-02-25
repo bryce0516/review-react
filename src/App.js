@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import Main from "./components/Main";
 import Count from "./components/Count"
+import UnableBatch from "./components/UnableBatch"
+import MultipleState from "./components/MultipleState";
+import UseEffect1 from "./components/UseEffect1";
 export default function App() {
   return (
     <Router>
@@ -19,6 +22,15 @@ export default function App() {
             <li>
               <Link to="/count">Count</Link>
             </li>
+            <li>
+              <Link to="/unablebatch">Unablebatch</Link>
+            </li>
+            <li>
+              <Link to="/multiple">multiplestate</Link>
+            </li>
+            <li>
+              <Link to="/useeffect1">useeffect1</Link>
+            </li>
           </ul>
         </nav>
 
@@ -30,6 +42,15 @@ export default function App() {
           </Route>
           <Route path="/count">
             <Count />
+          </Route>
+          <Route path="/unablebatch">
+            <UnableBatch />
+          </Route>
+          <Route path="/multiple">
+            <MultipleState />
+          </Route>
+          <Route path="/useeffect1">
+            <UseEffect1 />
           </Route>
         </Switch>
       </div>
