@@ -10,6 +10,7 @@ import Count from "./components/Count"
 import UnableBatch from "./components/UnableBatch"
 import MultipleState from "./components/MultipleState";
 import UseEffect1 from "./components/UseEffect1";
+import UseRef1 from "./components/UseRef1"
 export default function App() {
   return (
     <Router>
@@ -31,6 +32,9 @@ export default function App() {
             <li>
               <Link to="/useeffect1">useeffect1</Link>
             </li>
+            <li>
+              <Link to="/useref1">useref1</Link>
+            </li>
           </ul>
         </nav>
 
@@ -51,6 +55,9 @@ export default function App() {
           </Route>
           <Route path="/useeffect1">
             <UseEffect1 />
+          </Route>
+          <Route path="/useref1">
+            <UseRef1 />
           </Route>
         </Switch>
       </div>
