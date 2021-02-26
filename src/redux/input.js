@@ -53,7 +53,8 @@ export const addTodo = (text) => {
     type: ADD_TODO,
     todo:{
       id: nextId++,
-      text
+      text,
+      done: false
     }
   }
 }
@@ -61,7 +62,9 @@ export const addTodo = (text) => {
 export const toggleTodo = (id) => {
   return {
     type: TOGGLE_TODO,
-    id
+    todo:{
+      id
+    }
   }
 }
 
@@ -101,15 +104,17 @@ const reducer = (state = initialState, action) => {
         diff: action.diff
       }
     case ADD_TODO:
-      return state.todo.concat(action.todo);
+      return {
+        ...state,
+        todo: [...state.todo, action.todo]
+      }
 
     case TOGGLE_TODO:
-      return state.todo.map(
-        todo =>
-          todo.id === action.id
-            ? {...todo, done: !todo.done}
-            : todo
-      )
+      return {...state}
+      // return state.todo.map(
+      //   res => res.id === action.todo.id ?
+      //   {...state.todo} : {...state.todo}
+      // )
     default:
       return state
   }

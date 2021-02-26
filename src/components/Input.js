@@ -11,7 +11,6 @@ const Input = () => {
     todos: state.input.todo
   }))
   
-  console.log(number, diff, todos)
   const dispatch = useDispatch()
   const onIncrese = () => {
     dispatch(increse())
@@ -27,20 +26,20 @@ const Input = () => {
     dispatch(addTodo(text))
   }
   
-  const onToggle = useCallback((id) => {
+  const onToggle = (id) => {
     dispatch(toggleTodo(id))
-  }, [dispatch])
+  }
 
   const onChange = (e) => {
     setText(e.target.value)
   }
 
-  const onSubmit = (e, text) => {
+  const onSubmit = (e) => {
     e.preventDefault()
     onCreate(text)
     setText('');
   }
-
+  console.log('todos', todos)
 
   return ( 
     <div>
@@ -58,7 +57,16 @@ const Input = () => {
           />
           <button type="submit">등록</button>
         </form>
-        <TodoList todos={todos} onToggle={onToggle}/>
+        <ul>
+          {todos.map((todo) => (
+            <li 
+              key={todo.id}
+              onClick={() =>(onToggle(todo.id))}
+            >
+              {todo.text}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
 
@@ -66,26 +74,21 @@ const Input = () => {
 }
 
 
-const TodoItem = React.memo(function TodoItem({todo, onToggle}){
-  return (
-    <li
-      style={{ textDecoration: todo.done ? 'line-through' : 'none' }}
-      onClick={() => onToggle(todo.id)}
-    >
-      {todo.text}
-    </li>
-  )
-})
 
-const TodoList = React.memo(function TodList({todos, onToggle}){
-  console.log('todolist todos', todos)
+const TodoList = (todos, onToggle) => {
   return (
     <ul>
-      {todos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} onToggle={onToggle}/>
-      ))}
+      {/* {todos.map((todo) => (
+        <li
+         key={todo.id}
+         style={{ textDecoration: todo.done ? 'line-through' : 'none' }}
+         onClick={(todo) => onToggle(todo.id)}
+        >
+          {todo.text}
+        </li>
+      ))} */}
     </ul>
   )
-})
+}
  
 export default Input;
