@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store'
 import {Provider} from 'react-redux'
+import {increse} from './redux/input'
+store.dispatch(increse())
+console.log(store.getState())
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

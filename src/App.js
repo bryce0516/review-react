@@ -11,6 +11,8 @@ import UnableBatch from "./components/UnableBatch"
 import MultipleState from "./components/MultipleState";
 import UseEffect1 from "./components/UseEffect1";
 import UseRef1 from "./components/UseRef1"
+import Input from "./components/Input";
+
 export default function App() {
   return (
     <Router>
@@ -35,6 +37,9 @@ export default function App() {
             <li>
               <Link to="/useref1">useref1</Link>
             </li>
+            <li>
+              <Link to="/input">input</Link>
+            </li>
           </ul>
         </nav>
 
@@ -58,6 +63,9 @@ export default function App() {
           </Route>
           <Route path="/useref1">
             <UseRef1 />
+          </Route>
+          <Route path="/input">
+            <Input />
           </Route>
         </Switch>
       </div>
